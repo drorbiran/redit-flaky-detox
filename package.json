@@ -2,15 +2,32 @@
   "name": "react_native_navigation_bootstrap",
   "version": "0.0.1",
   "private": true,
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/react_native_navigation_bootstrap.app",
+        "build": "xcodebuild -project ios/react_native_navigation_bootstrap.xcodeproj -scheme react_native_navigation_bootstrap -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      }
+    }
+  },
   "scripts": {
     "start": "watchman watch-del-all && (adb reverse tcp:8081 tcp:8081 || true) && node node_modules/react-native/local-cli/cli.js start",
     "android": "cd android ; ./gradlew installDebug",
     "xcode": "open ios/react_native_navigation_bootstrap.xcodeproj"
   },
   "dependencies": {
-    "react-native": "0.44.2",
+    "lodash": "^4.17.4",
+    "prop-types": "*",
     "react": "16.0.0-alpha.6",
+    "react-native": "0.44.2",
     "react-native-navigation": "1.x.x",
-    "prop-types": "*"
+    "remx": "^2.0.19",
+    "wix-react-native-ui-lib": "^1.924.0"
+  },
+  "devDependencies": {
+    "detox": "^5.8.4",
+    "mocha": "^3.5.0"
   }
 }
